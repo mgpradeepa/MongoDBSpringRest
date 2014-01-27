@@ -35,7 +35,7 @@ public class SpringMongoAppTest {
 		orderService.createOrderCollection();
 
 		List<Order> batchOrders = new ArrayList<Order>();
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 10000; i++) {
 			randomInteger = (int) Math.random() * 100 + i;
 			order = new Order(randomInteger, "OrderFor_Type " + randomInteger,
 					"OrderBY_Data " + randomInteger, 100, new Customer(
