@@ -36,7 +36,7 @@ public class SpringMongoAppTest {
 
 		List<Order> batchOrders = new ArrayList<Order>();
 		for (int i = 0; i < 10000; i++) {
-			randomInteger = (int) Math.random() * 100 + i;
+			randomInteger = (int) Math.random() * 125 + i;
 			order = new Order(randomInteger, "OrderFor_Type " + randomInteger,
 					"OrderBY_Data " + randomInteger, 100, new Customer(
 							randomInteger * 2, "Namaha " + randomInteger * 2,
@@ -44,11 +44,6 @@ public class SpringMongoAppTest {
 							new Date()));
 			batchOrders.add(order);
 		}
-
-		// for(int i=0; i<20; i++) {
-		// orderService.create(new Order(007, "Camera", "online", 12));
-		// orderService.update(new Order(007, "Handycam", "online", 12));
-		// }
 
 		List<Order> orderResults = orderService.findAllOrders();
 		for (Order ordere : orderResults) {

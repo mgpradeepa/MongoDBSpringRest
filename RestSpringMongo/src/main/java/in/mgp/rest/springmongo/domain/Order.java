@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Persistent;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -19,6 +20,8 @@ public class Order implements Serializable {
 	@Id
 	private int orderId;
 	private String orderFor;
+
+	@Indexed
 	private String orderBy;
 	private int inventory;
 	@Persistent
@@ -26,6 +29,14 @@ public class Order implements Serializable {
 
 	public Customer getCustomer() {
 		return customer;
+	}
+
+	public int getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(int inventory) {
+		this.inventory = inventory;
 	}
 
 	public void setCustomer(Customer customer) {
@@ -41,7 +52,7 @@ public class Order implements Serializable {
 		this.orderId = orderId;
 		this.orderFor = orderFor;
 		this.orderBy = orderBy;
-		inventory = inventory;
+		this.inventory = inventory;
 	}
 
 	public Order(int orderId, String orderFor, String orderBy) {

@@ -4,6 +4,7 @@ import in.mgp.rest.springmongo.domain.Order;
 import in.mgp.rest.springmongo.repository.OrderRepo;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -27,9 +28,14 @@ public class OrderRepoImpl implements OrderRepo {
 		// .is("Software")
 		// .andOperator(
 		// Criteria.where("customerName").regex(
-		// "^[a-z]*"))), Order.class);
+		// "[a-z]*"))), Order.class);
 
-		return mongoTemplate.findAll(Order.class);
+		Pattern pattern = Pattern.compile("^[oO*2]*");
+		// Matcher
+		return mongoTemplate.find(
+				new Query(Criteria.where("orderBy").regex(pattern)),
+				Order.class);
+		// return mongoTemplate.findAll(Order.class);
 
 	}
 
