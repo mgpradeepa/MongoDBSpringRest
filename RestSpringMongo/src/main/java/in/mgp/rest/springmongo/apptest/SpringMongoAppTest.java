@@ -59,7 +59,7 @@ public class SpringMongoAppTest {
 
 		OrderServiceImpl impl = context.getBean(OrderServiceImpl.class);
 		// impl.create(new Order(007, "Camera", "online", 12));
-		impl.create(batchOrders);
+		// impl.create(batchOrders);
 		logger.info("Order created");
 		logger.info("Finished MongoDemo application");
 

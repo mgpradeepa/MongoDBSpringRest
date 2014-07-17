@@ -52,6 +52,8 @@ public interface AppUserRepo {
 	 */
 	void updateAppUser(AppUser appUser);
 
+	boolean updateAppUser(AppUser thisUser, AppUser thisUserFriendsDetails);
+
 	/**
 	 * find the App user for the provided Id
 	 * 

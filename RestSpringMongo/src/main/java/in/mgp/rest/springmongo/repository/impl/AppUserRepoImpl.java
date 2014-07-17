@@ -32,8 +32,7 @@ public class AppUserRepoImpl implements AppUserRepo {
 
 	@Override
 	public void createAppUser(AppUser appUser) {
-		// TODO Auto-generated method stub
-
+		mongoTemplate.insert(appUser);
 	}
 
 	@Override
@@ -55,6 +54,14 @@ public class AppUserRepoImpl implements AppUserRepo {
 	}
 
 	@Override
+	public boolean updateAppUser(AppUser thisUser,
+			AppUser thisUserFriendsDetails) {
+
+		// mongoTemplate.updateFirst(query, update, entityClass)
+		return false;
+	}
+
+	@Override
 	public AppUser findAppUser(String userId) {
 		// TODO Auto-generated method stub
 		return null;
@@ -62,8 +69,6 @@ public class AppUserRepoImpl implements AppUserRepo {
 
 	@Override
 	public void deleteAppUser(AppUser appUser) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
