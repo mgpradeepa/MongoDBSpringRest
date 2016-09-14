@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 @XmlRootElement
-public class AppUser implements Serializable {
+public class AppUser implements Serializable, Comparable<AppUser> {
 	private static final long serialVersionUID = -5419980702000653104L;
 
 	@Indexed
@@ -149,6 +149,17 @@ public class AppUser implements Serializable {
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public int compareTo(AppUser other) {
+		if (userId.equalsIgnoreCase(other.userId)) {
+
+			return 1;
+		} else {
+			return 0;
+		}
+
 	}
 
 }

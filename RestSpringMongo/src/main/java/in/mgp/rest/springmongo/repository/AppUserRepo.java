@@ -16,11 +16,18 @@ public interface AppUserRepo {
 	AppUser checkUser(AppUser appUser);
 
 	/**
-	 * get the list of Users along with
+	 * get the list of Users along with the Commodity details
 	 * 
 	 * @return
 	 */
 	List<AppUser> getAllAppUserAndCommodity();
+
+	/**
+	 * get the list of Users without Commodity and further details.
+	 * 
+	 * @return
+	 */
+	List<AppUser> getAllAppUser();
 
 	/**
 	 * create the appuser

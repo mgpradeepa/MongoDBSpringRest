@@ -87,4 +87,8 @@ public class AppUserRepoImpl implements AppUserRepo {
 
 	}
 
+	@Override
+	public List<AppUser> getAllAppUser() {
+		return mongoTemplate.find(null, AppUser.class);
+	}
 }

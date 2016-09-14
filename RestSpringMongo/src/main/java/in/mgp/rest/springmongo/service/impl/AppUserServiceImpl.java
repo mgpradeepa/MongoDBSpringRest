@@ -7,6 +7,7 @@ import in.mgp.rest.springmongo.domain.AppUser;
 import in.mgp.rest.springmongo.repository.AppUserRepo;
 import in.mgp.rest.springmongo.service.AppUserService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,22 +20,48 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Scope("singleton")
-public class AppUserServiceImpl<T> implements AppUserService<T> {
+public class AppUserServiceImpl implements AppUserService {
 
 	@Autowired
 	AppUserRepo repo;
 
 	@Override
-	public List<T> findAll() {
-		// TODO Auto-generated method stub
+	public List<AppUser> findAll() {
 
-		return null;
+		List<AppUser> resultUsersList = new ArrayList<AppUser>();
+		List<AppUser> friendList = null;
+
+		for (AppUser appUser : repo.getAllAppUser()) {
+			AppUser user = new AppUser();
+			user.setUserId(appUser.getUserId());
+			user.setUserName(appUser.getUserName());
+			user.setUserConnect(appUser.getUserConnect());
+			if (appUser.getUserFriends().size() > 0) {
+				friendList = new ArrayList<AppUser>();
+				for (AppUser friends : appUser.getUserFriends()) {
+
+					AppUser friendData = new AppUser();
+					friendData.setUserId(friends.getUserId());
+					friendData.setUserName(friends.getUserName());
+					friendList.add(friendData);
+				}
+
+				user.setUserFriends(friendList);
+
+			} else {
+				user.setUserFriends(null);
+			}
+			resultUsersList.add(user);
+
+		}
+
+		return resultUsersList;
 	}
 
 	@Override
-	public T findById() {
+	public AppUser findById() {
 		// TODO Auto-generated method stub
-		return (T) new AppUser();
+		return new AppUser();
 	}
 
 	@Override

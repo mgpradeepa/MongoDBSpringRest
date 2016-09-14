@@ -4,11 +4,11 @@ import in.mgp.rest.springmongo.domain.AppUser;
 
 import java.util.List;
 
-public interface AppUserService<T> {
+public interface AppUserService {
 
-	List<T> findAll();
+	List<AppUser> findAll();
 
-	T findById();
+	AppUser findById();
 
 	void createAppUser(AppUser appUser);
 
